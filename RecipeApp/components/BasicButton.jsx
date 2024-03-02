@@ -12,16 +12,16 @@ function SmallButton({ onPress, title }) {
 const styles = StyleSheet.create({
   TouchableOpacity: {
     backgroundColor: "#F1F1F1",
-    padding: 10,
-    borderRadius: 10,
+    margin: 10,
+    borderRadius: 5,
   },
 
   Text: {
     fontSize: 15,
-    marginLeft: 20,
-    marginRight: 20,
-    marginTop: 1,
-    marginBottom: 1,
+    marginLeft: 10,
+    marginRight: 10,
+    marginTop: 3,
+    marginBottom: 3,
     textAlign: "center",
   },
 });

@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import  SmallButton from './components/BasicButton';
 import FoodCard from './components/FoodCard';
+import { SearchBar,OnSearchBar } from './components/SearchBar';
 
 export default function App() {
   return (
@@ -12,6 +13,9 @@ export default function App() {
       <Text>Components food card show</Text>
       <FoodCard title="Pasta´s House" description="Pasta | Italiana" image={require('./assets/FoodImgExample.jpg')}/>
       <StatusBar style="auto" />
+      <Text>Components SearchBar and OnSearchBar</Text>
+      <SearchBar placeholder="Buscar una receta"/>
+      <OnSearchBar placeholder="Buscar" />
     </View>
   );
 }
