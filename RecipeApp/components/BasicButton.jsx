@@ -1,19 +1,47 @@
 import React from "react";
-import { TouchableOpacity, Text, StyleSheet } from "react-native";
+import { TouchableOpacity, Text, StyleSheet, Image, View } from "react-native";
 
-function SmallButton({ onPress, title }) {
+
+export function SmallButton({ onPress, title }) {
   return (
-    <TouchableOpacity onPress={onPress} style={styles.TouchableOpacity}>
+    <TouchableOpacity onPress={onPress} style={styles.SmallButton}>
       <Text style={styles.Text}>{title}</Text>
     </TouchableOpacity>
   );
 }
 
+export const RoundButton = ({image, onPress, title}) =>(
+
+  <View style = {styles.RoundButtonContainer}>
+    <TouchableOpacity onPress={onPress} style={styles.RoundButton}>
+      <Image source = {image} style = {styles.icon}/>
+      
+    </TouchableOpacity>
+    <Text style={styles.textRoundButton}>{title}</Text>
+  </View>
+
+  
+
+);
+
 const styles = StyleSheet.create({
-  TouchableOpacity: {
+  SmallButton: {
     backgroundColor: "#F1F1F1",
     margin: 10,
     borderRadius: 5,
+  },
+  RoundButtonContainer:{
+    margin: 10,
+  },
+
+  RoundButton:{
+    backgroundColor: "#F1F1F1",
+    borderRadius: 50,
+  },
+  icon:{
+    width: 20,
+    height: 20,
+    margin: 15,
   },
 
   Text: {
@@ -24,6 +52,10 @@ const styles = StyleSheet.create({
     marginBottom: 3,
     textAlign: "center",
   },
+  textRoundButton: {
+    fontSize: 15,
+    textAlign: "center",
+  },
 });
 
-export default SmallButton;
+
