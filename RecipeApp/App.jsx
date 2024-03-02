@@ -1,10 +1,14 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import  SmallButton from './components/BasicButton';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+
+      <Text>Components small button show</Text>
+      <SmallButton title="Press me"/>
+
       <StatusBar style="auto" />
     </View>
   );
