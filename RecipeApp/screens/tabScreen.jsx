@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import * as Svg from 'react-native-svg';
 import DashboardScreen from './dashboardScreen';
+import SearchScreen from './searchScreen';
+import FavoritesScreen from './favoritesScreen';
 
 const barItems = [
   {
@@ -10,11 +12,11 @@ const barItems = [
   },
   {
     icon: 'https://www.svgrepo.com/show/532555/search.svg',
-    page: <DashboardScreen/>,
+    page: <SearchScreen/>,
   },
   {
     icon: 'https://www.svgrepo.com/show/532473/heart.svg',
-    page: <DashboardScreen/>,
+    page: <FavoritesScreen/>,
   },
 ];
 
