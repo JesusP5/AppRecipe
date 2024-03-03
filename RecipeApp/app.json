@@ -10,6 +10,14 @@
       "image": "./assets/splash.png",
       "backgroundColor": "#ffffff"
     },
+    "plugins": [
+      [
+        "expo-font",
+        {
+          "fonts": ["./assets/fonts/MoreSugar-Regular.ttf"]
+        }
+      ]
+    ],
     "assetBundlePatterns": [
       "**/*"
     ],
