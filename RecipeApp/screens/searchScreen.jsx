@@ -2,7 +2,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import {Keyboard} from 'react-native'
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
 
-export default DashboardScreen = () => {
+export default SearchScreen = () => {
   const dismissOnTap = Gesture.Tap().onEnd(() => Keyboard.dismiss());
   const composed = Gesture.Simultaneous(dismissOnTap)
 
