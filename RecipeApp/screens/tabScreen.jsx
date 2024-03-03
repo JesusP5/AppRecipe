@@ -4,6 +4,7 @@ import * as Svg from 'react-native-svg';
 import DashboardScreen from './dashboardScreen';
 import SearchScreen from './searchScreen';
 import FavoritesScreen from './favoritesScreen';
+import { Animated } from 'react-native';
 
 const barItems = [
   {
@@ -23,9 +24,23 @@ const barItems = [
 export default function DashboardPage() {
   const [selectedWidgetIndex, setSelectedWidgetIndex] = useState(0);
 
+  const fadeAnim = useState(new Animated.Value(0))[0];
+
+  Animated.timing(
+    fadeAnim,
+    {
+      toValue: 1,
+      duration: 500,
+      useNativeDriver: true
+    }
+  ).start();
+
   const onPageChanged = (index) => {
-    setSelectedWidgetIndex(index);
-  };
+    Animated.timing(fadeAnim, { toValue: 0, duration: 0, useNativeDriver: true }).start(() => {
+      setSelectedWidgetIndex(index);
+      Animated.timing(fadeAnim, { toValue: 1, duration: 500, useNativeDriver: true }).start();
+    });
+  }
 
   return (
     <View style={styles.container}>
