@@ -1,29 +1,15 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import  {SmallButton, RoundButton} from './components/BasicButton';
-import FoodCard from './components/FoodCard';
-import { SearchBar,OnSearchBar } from './components/SearchBar';
-import {Recomendation, Recent}  from './components/SearchElement';
+import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import DashboardScreen from './screens/dashboardScreen';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import TabScreen from './screens/tabScreen';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-
-      <Text>Components Basic button show</Text>
-      <SmallButton title="Press me"/>
-      <RoundButton title = "Burgir" image = {require('./assets/hamburger.png')}/>
-      <Text>Components food card show</Text>
-      <FoodCard title="Pasta´s House" description="Pasta | Italiana" image={require('./assets/FoodImgExample.jpg')}/>
-      <StatusBar style="auto" />
-      <Text>Components SearchBar and OnSearchBar show</Text>
-      <SearchBar placeholder="Buscar una receta"/>
-      <OnSearchBar placeholder="Buscar" />
-      <Text>Components OnSearchElements and OnSearchBar show</Text>
-      <Recomendation title = "Burger king"/>
-      <Recent title='Arroz'/>
-      
-
-    </View>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <SafeAreaView style={styles.container}>
+        <TabScreen/>
+      </SafeAreaView>
+    </GestureHandlerRootView>
   );
 }
 

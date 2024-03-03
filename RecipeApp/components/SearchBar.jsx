@@ -56,16 +56,13 @@ export const OnSearchBar = ({value, onChangeText, placeholder, onPress}) => (
 
     container: {
         flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
-        margin:10
     },
 
     input: {
       backgroundColor: '#F1F1F1',
       fontSize: 15,
       height: 38,
-      width: 357,
+      width: '100%',
       borderRadius: 10,
       paddingLeft: 40,
     },
@@ -74,7 +71,7 @@ export const OnSearchBar = ({value, onChangeText, placeholder, onPress}) => (
     backgroundColor: '#F1F1F1',
       fontSize: 15,
       height: 38,
-      width: 357,
+      width: '100%',
       borderRadius: 5,
       paddingLeft: 40,
     },
