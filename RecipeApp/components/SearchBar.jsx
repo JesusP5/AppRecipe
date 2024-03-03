@@ -32,10 +32,10 @@ export const OnSearchBar = ({value, onChangeText, placeholder, onPress}) => (
     
     
     <TextInput
-      style={styles.input}
-      onChangeText={onChangeText}
-      value={value}
-      placeholder={placeholder}
+      style = {styles.input}
+      onChangeText = {onChangeText}
+      value = {value}
+      placeholder = {placeholder}
     />
     <TouchableOpacity onPress={onPress} style={styles.TouchableOpacity}>
         <Image
