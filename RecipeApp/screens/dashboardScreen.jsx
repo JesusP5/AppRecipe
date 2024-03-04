@@ -91,6 +91,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "start",
     justifyContent: "start",
+    marginTop: 25,
   },
   title: {
     fontFamily: "MoreSugar",
