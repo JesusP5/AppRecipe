@@ -10,6 +10,7 @@ export default function SummaryScreen({ selectedElement }) {
   const dismissOnTap = Gesture.Tap().onEnd(() => Keyboard.dismiss());
   const composed = Gesture.Simultaneous(dismissOnTap);
   const data = selectedElement;
+  const ingredients = data.extendedIngredients.map(ingredient => ingredient.original).join('\n');
   const instructionsWithoutTags = data.instructions.replace(/<[^>]*>/g, '');
   return (
     <GestureDetector gesture={composed}>
@@ -18,10 +19,12 @@ export default function SummaryScreen({ selectedElement }) {
           <Text style={styles.title}>{data.title}</Text>
           <Image source={{ uri: data.image }} style={styles.image} />
         </View>
-        <View style={styles.botScreen}>
+        <ScrollView style={styles.botScreen}>
           <Text style={styles.titleSumary}>Recipe:</Text>
           <Text>{instructionsWithoutTags}</Text>
-        </View>
+          <Text style={styles.titleSumary}>Ingredients:</Text>
+          <Text>{ingredients}</Text>
+          </ScrollView>
       </View>
     </GestureDetector>
   );
@@ -50,6 +53,7 @@ const styles = StyleSheet.create({
   },
   botScreen: {
     flex: 1,
+    marginTop:15
   },
   image: {
     width: "90%",
