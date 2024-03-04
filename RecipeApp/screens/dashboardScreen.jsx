@@ -1,68 +1,64 @@
-import React, { useState} from 'react';
-import { StyleSheet, Text, View,  } from 'react-native';
-import { SearchBar, } from '../components/SearchBar';
-import {Keyboard} from 'react-native'
-import { Gesture, GestureDetector } from "react-native-gesture-handler";
-import { useFonts } from 'expo-font';
-import AppLoadingScreen from './appLoadingsScreen';
-import SearchScreen from './searchScreen';
-import { Animated } from 'react-native';
+import React from "react";
+import { View, Text, StyleSheet, Image, Keyboard} from "react-native";
+import {
+  Gesture,
+  GestureDetector,
+  ScrollView,
+} from "react-native-gesture-handler";
 
-const searchScreen = <SearchScreen/>;
-
-export default DashboardScreen = () => {
-
+export default function SummaryScreen({ selectedElement }) {
   const dismissOnTap = Gesture.Tap().onEnd(() => Keyboard.dismiss());
   const composed = Gesture.Simultaneous(dismissOnTap);
-  
-
- 
-
-  
-  
-  
-
-  
-
-  let [fontsLoaded] = useFonts({
-    'MoreSugar': require('../assets/fonts/MoreSugar-Regular.ttf'),
-  });
-
-  if (!fontsLoaded) {
-    return <AppLoadingScreen />;
-  }
-
-  
-
-
-
+  const data = selectedElement;
+  const ingredients = data.extendedIngredients.map(ingredient => ingredient.original).join('\n');
+  const instructionsWithoutTags = data.instructions.replace(/<[^>]*>/g, '');
   return (
     <GestureDetector gesture={composed}>
       <View style={styles.container}>
-        <View style={styles.contentMargin}>
-          <Text style={styles.title}>
-            COOKKING
-          </Text>
-          <SearchBar placeholder="Buscar una receta" />
+        <View style={styles.topScreen}>
+          <Text style={styles.title}>{data.title}</Text>
+          <Image source={{ uri: data.image }} style={styles.image} />
         </View>
+        <ScrollView style={styles.botScreen}>
+          <Text style={styles.titleSumary}>Recipe:</Text>
+          <Text>{instructionsWithoutTags}</Text>
+          <Text style={styles.titleSumary}>Ingredients:</Text>
+          <Text>{ingredients}</Text>
+          </ScrollView>
       </View>
     </GestureDetector>
   );
 }
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'start',
-    justifyContent: 'start',
+    backgroundColor: "#fff",
+    padding: 20,
+    marginTop: 20,
   },
   title: {
-    fontFamily: 'MoreSugar',
-    fontSize: 28,
+    fontFamily: "MoreSugar",
+    fontSize: 24,
+    marginVertical: 20,
+    marginHorizontal: 30,
+  },
+  titleSumary: {
+    fontFamily: "MoreSugar",
+    fontSize: 20,
     marginVertical: 20,
   },
-  contentMargin:{
-    marginHorizontal: 50,
-  }
+  topScreen: {
+    flex: 1,
+    alignItems: "center",
+  },
+  botScreen: {
+    flex: 1,
+    marginTop:15
+  },
+  image: {
+    width: "90%",
+    height: "75%",
+    borderRadius: 10,
+    margin:0,
+  },
 });
