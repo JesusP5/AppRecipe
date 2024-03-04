@@ -3,7 +3,7 @@ import { TouchableOpacity, Text, StyleSheet, Image, View } from "react-native";
 
 export const Recomendation= ({ title, onPress}) =>(
 
-    <View style = {styles.Container}>
+  <View style = {styles.Container}>
     <TouchableOpacity onPress={onPress} style={styles.TouchableOpacity}>
       <Image source={require('../assets/loupe.png')} style = {styles.icon}/>
       <Text style = {styles.Text}>{title}</Text>
@@ -92,7 +92,4 @@ const styles = StyleSheet.create({
   },
   
 });
-
-
-
 

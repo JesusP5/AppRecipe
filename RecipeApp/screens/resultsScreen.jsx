@@ -8,8 +8,10 @@ import { NavigationContainer } from '@react-navigation/native';
 import SummaryScreen from './summaryScreen';
 
 
-const ResultsScreen = () => {
+const ResultsScreen = ({ingredient}) => {
+
     const [data, setData] = useState([]);
+    let ingredients = ingredient;
     let [fontsLoaded] = useFonts({
       MoreSugar: require('../assets/fonts/MoreSugar-Regular.ttf'),
     });
@@ -17,7 +19,7 @@ const ResultsScreen = () => {
     useEffect(() => {
       const fetchData = async () => {
         try {
-          const response = await fetch('http://www.themealdb.com/api/json/v1/1/search.php?s=salad');
+          const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredients}`);
           const data = await response.json();
           setData(data.meals);
         } catch (error) {
