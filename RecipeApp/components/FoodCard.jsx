@@ -4,7 +4,7 @@ import { View, Text, StyleSheet, Image, TouchableOpacity} from "react-native";
 function FoodCard({ title, description, image, onPress }) {
   return (
     <TouchableOpacity onPress={onPress} style={styles.card}>
-      <Image source={image} style={styles.image} />
+      <Image source={{ uri: image }} style={styles.image} />
       <View style={styles.cardText}>
         <Text style={styles.title}>{title}</Text>
         <Text style={styles.description}>{description}</Text>
@@ -12,6 +12,7 @@ function FoodCard({ title, description, image, onPress }) {
     </TouchableOpacity>
   );
 }
+
 const styles = StyleSheet.create({
     card: {
         backgroundColor: "#fff",
@@ -37,6 +38,6 @@ const styles = StyleSheet.create({
         height: 104,
         borderRadius: 10,
     },
-    });
+});
 
 export default FoodCard;
