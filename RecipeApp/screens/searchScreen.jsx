@@ -62,7 +62,7 @@ export default SearchScreen = () => {
 
     try {
       const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredients}`);
-
+      
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
@@ -85,7 +85,7 @@ export default SearchScreen = () => {
   const dismissOnTap = Gesture.Tap().onEnd(() => Keyboard.dismiss());
   const composed = Gesture.Simultaneous(dismissOnTap)
 
-  if (ingredients != null) {
+  if (data != null) {
     return <ResultsScreen ingredient={ingredients}/>;
   }
 
@@ -172,7 +172,7 @@ const styles = StyleSheet.create({
 
   },
   Text: {
-    fontFamily: 'Monsterrat-Bold',
+    fontFamily: 'MoreSugar',
     fontSize: 25,
     marginBottom: 10,
 

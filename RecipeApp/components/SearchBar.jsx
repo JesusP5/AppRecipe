@@ -26,7 +26,7 @@ export const  SearchBar  = ({ value, onChangeText, placeholder, onPress}) => (
     
 );
 
-export const OnSearchBar = ({value, onChangeText, placeholder, onPress}) => (
+export const OnSearchBar = ({value, onChangeText, placeholder, onPress, onSubmit}) => (
     <View style={styles.container}>
 
     
@@ -36,6 +36,7 @@ export const OnSearchBar = ({value, onChangeText, placeholder, onPress}) => (
       onChangeText = {onChangeText}
       value = {value}
       placeholder = {placeholder}
+      onSubmitEditing = {onSubmit}
     />
     <TouchableOpacity onPress={onPress} style={styles.TouchableOpacity}>
         <Image
