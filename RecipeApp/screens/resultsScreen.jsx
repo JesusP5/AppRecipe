@@ -4,6 +4,8 @@ import { View, Text, SafeAreaView, StatusBar, ScrollView } from 'react-native';
 import FoodCard from '../components/FoodCard';
 import { OnSearchBar } from '../components/SearchBar';
 import { useFonts } from 'expo-font';
+import { NavigationContainer } from '@react-navigation/native';
+import SummaryScreen from './summaryScreen';
 
 
 const ResultsScreen = () => {
@@ -42,6 +44,7 @@ const ResultsScreen = () => {
               title={item.strMeal}
               description={item.strArea}
               image={item.strMealThumb}
+              onPress={() => goToSummary(item)}
             />
           ))}
         </View>
