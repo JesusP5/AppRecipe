@@ -1,13 +1,28 @@
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState} from 'react';
+import { StyleSheet, Text, View,  } from 'react-native';
 import { SearchBar, } from '../components/SearchBar';
 import {Keyboard} from 'react-native'
 import { Gesture, GestureDetector } from "react-native-gesture-handler";
 import { useFonts } from 'expo-font';
 import AppLoadingScreen from './appLoadingsScreen';
+import SearchScreen from './searchScreen';
+import { Animated } from 'react-native';
+
+const searchScreen = <SearchScreen/>;
 
 export default DashboardScreen = () => {
+
   const dismissOnTap = Gesture.Tap().onEnd(() => Keyboard.dismiss());
   const composed = Gesture.Simultaneous(dismissOnTap);
+  
+
+ 
+
+  
+  
+  
+
+  
 
   let [fontsLoaded] = useFonts({
     'MoreSugar': require('../assets/fonts/MoreSugar-Regular.ttf'),
@@ -16,6 +31,8 @@ export default DashboardScreen = () => {
   if (!fontsLoaded) {
     return <AppLoadingScreen />;
   }
+
+  
 
 
 
@@ -26,7 +43,7 @@ export default DashboardScreen = () => {
           <Text style={styles.title}>
             COOKKING
           </Text>
-          <SearchBar placeholder="Buscar una receta"/>
+          <SearchBar placeholder="Buscar una receta" />
         </View>
       </View>
     </GestureDetector>
