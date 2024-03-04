@@ -32,15 +32,21 @@ const styles = StyleSheet.create({
   },
   RoundButtonContainer:{
     margin: 10,
+    justifyContent: "center",
+    alignItems: 'center',
+    alignSelf: 'flex-start', // Add this line
   },
 
   RoundButton:{
     backgroundColor: "#F1F1F1",
     borderRadius: 50,
+    justifyContent: "center",
+    alignItems: 'center',
+    alignSelf: 'flex-start', // Add this line
   },
   icon:{
-    width: 20,
-    height: 20,
+    width: 30,
+    height: 30,
     margin: 15,
   },
 
