@@ -56,6 +56,7 @@ export const OnSearchBar = ({value, onChangeText, placeholder, onPress}) => (
 
     container: {
         flexDirection: 'row',
+        
     },
 
     input: {

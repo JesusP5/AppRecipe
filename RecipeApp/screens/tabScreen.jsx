@@ -5,6 +5,7 @@ import DashboardScreen from './dashboardScreen';
 import SearchScreen from './searchScreen';
 import FavoritesScreen from './favoritesScreen';
 import { Animated } from 'react-native';
+import ResultsScreen from './resultsScreen';
 
 const barItems = [
   {
