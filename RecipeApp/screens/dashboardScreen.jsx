@@ -17,7 +17,7 @@ export default function DashboardScreen() {
   const [simpleRecipes, setSimpleRecipes] = useState(null);
   const [currentPage, setCurrentPage] = useState("dashboard");
   const [selectedElement, setSelectedElement] = useState(null);
-
+  const [selectedSimpleElement, setSelectedSimpleElement] = useState(null);
   const dismissOnTap = Gesture.Tap().onEnd(() => Keyboard.dismiss());
   const composed = Gesture.Simultaneous(dismissOnTap);
   const API_KEY = "affec1406a384e37982659a430a102d9";
@@ -28,14 +28,21 @@ export default function DashboardScreen() {
 
   const goToSummary = (element) => {
     setSelectedElement(element);
+    setSelectedSimpleElement(null);
     setCurrentPage('summary');
   };
+
+  const goToSimpleSummary = (element) => {
+    setSelectedSimpleElement(element);
+    setSelectedElement(null);
+    setCurrentPage('summary');
+  }
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          "https://api.spoonacular.com/recipes/random?number=5&apiKey=affec1406a384e37982659a430a102d9"
+          "https://api.spoonacular.com/recipes/random?number=5&apiKey=996ec117e0c249fcaa5a2d726bd9eddb"
         );
 
         if (!response.ok) {
@@ -55,7 +62,7 @@ export default function DashboardScreen() {
     const fetchSimpleData = async () => {
       try {
         const response = await fetch(
-          "https://api.spoonacular.com/recipes/complexSearch?query=easy&number=5&apiKey=affec1406a384e37982659a430a102d9"
+          "https://api.spoonacular.com/recipes/complexSearch?query=easy&number=5&apiKey=996ec117e0c249fcaa5a2d726bd9eddb"
         );
 
         if (!response.ok) {
@@ -79,7 +86,7 @@ export default function DashboardScreen() {
     return <AppLoadingScreen />;
   }
   if (currentPage === "summary") {
-    return <SummaryScreen selectedElement={selectedElement}/>;
+    return <SummaryScreen selectedElement={selectedElement} selectedSimpleElement={selectedSimpleElement}/>;
   }
   return (
     <GestureDetector gesture={composed}>
@@ -113,7 +120,7 @@ export default function DashboardScreen() {
                     image={element.image}
                     onPress={() => {
                       // Aqui va el elemento
-                      goToSummary(element);
+                      goToSimpleSummary(element);
                     }}
                   />
                 ))}

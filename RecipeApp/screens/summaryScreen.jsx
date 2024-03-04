@@ -1,17 +1,54 @@
-import React from "react";
-import { View, Text, StyleSheet, Image, Keyboard} from "react-native";
+import React, { useEffect, useState } from "react";
+import { View, Text, StyleSheet, Image, Keyboard } from "react-native";
 import {
   Gesture,
   GestureDetector,
   ScrollView,
 } from "react-native-gesture-handler";
 
-export default function SummaryScreen({ selectedElement }) {
+export default function SummaryScreen({
+  selectedElement,
+  selectedSimpleElement,
+}) {
+  const [data, setData] = useState(null);
   const dismissOnTap = Gesture.Tap().onEnd(() => Keyboard.dismiss());
   const composed = Gesture.Simultaneous(dismissOnTap);
-  const data = selectedElement;
-  const ingredients = data.extendedIngredients.map(ingredient => ingredient.original).join('\n');
-  const instructionsWithoutTags = data.instructions.replace(/<[^>]*>/g, '');
+
+  useEffect(() => {
+    if (selectedElement !== null) {
+      setData(selectedElement);
+    } else if (selectedSimpleElement !== null) {
+      const fetchData = async () => {
+        try {
+          const response = await fetch(
+            `https://api.spoonacular.com/recipes/${selectedSimpleElement.id}/information?apiKey=996ec117e0c249fcaa5a2d726bd9eddb`
+          );
+
+          if (!response.ok) {
+            console.error("HTTP error", response.status);
+            return;
+          }
+
+          const dat = await response.json();
+          setData(dat);
+        } catch (error) {
+          console.error(error);
+        }
+      };
+      fetchData();
+    }
+  }, [selectedElement, selectedSimpleElement]);
+
+  if (!data) {
+    return <Text>Loading...</Text>;
+  }
+
+  const ingredients = data.extendedIngredients
+    .map((ingredient) => ingredient.original)
+    .join("\n");
+  const instructionsWithoutTags = data.instructions.replace(/<[^>]*>/g, "");
+
+
   return (
     <GestureDetector gesture={composed}>
       <View style={styles.container}>
@@ -24,7 +61,7 @@ export default function SummaryScreen({ selectedElement }) {
           <Text>{instructionsWithoutTags}</Text>
           <Text style={styles.titleSumary}>Ingredients:</Text>
           <Text>{ingredients}</Text>
-          </ScrollView>
+        </ScrollView>
       </View>
     </GestureDetector>
   );
@@ -53,12 +90,12 @@ const styles = StyleSheet.create({
   },
   botScreen: {
     flex: 1,
-    marginTop:15
+    marginTop: 15,
   },
   image: {
     width: "90%",
     height: "75%",
     borderRadius: 10,
-    margin:0,
+    margin: 0,
   },
 });
