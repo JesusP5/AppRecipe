@@ -12,6 +12,7 @@ function FoodCard({ title, description, image, onPress }) {
     </TouchableOpacity>
   );
 }
+
 const styles = StyleSheet.create({
     card: {
         backgroundColor: "#fff",
@@ -37,6 +38,6 @@ const styles = StyleSheet.create({
         height: 104,
         borderRadius: 10,
     },
-    });
+});
 
 export default FoodCard;
